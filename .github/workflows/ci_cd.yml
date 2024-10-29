@@ -1,0 +1,61 @@
+# .github/workflows/ci.yml
+name: CI/CD Pipeline
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on pull request events but only for the "main" branch
+
+  pull_request:
+    branches:
+      ["main"]
+
+      # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+    # A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    name:
+      Build and deploy CI_CD Test GitHub Actions
+
+      # The type of runner that the job will run on
+    runs-on:
+      ubuntu-latest
+
+      # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      # Sets up Node.js environment.
+      - name: Create Node Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18.x"
+
+          # Installs npm packages and builds the Vue.js application.
+      - name: Install Packages and dependencies
+        run: npm ci
+
+      - name: Unit Tests
+        run: npm run test:unit
+
+      - name: Build project
+        run: npm run build
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      deployments: write
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: JorgeLNJunior/render-deploy@v1.4.4
+        with:
+          service_id: ${{ secrets.RENDER_SERVICE_ID }}
+          api_key: ${{ secrets.RENDER_API_KEY }}
+          clear_cache: true
+          wait_deploy: true
+          github_deployment: true
+          deployment_environment: "production"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
