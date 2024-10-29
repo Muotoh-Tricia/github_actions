@@ -1,0 +1,139 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+header{
+  background-color: rgb(48, 47, 47);
+  color: white;
+  padding: 20px 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+}
+
+.logo img {
+  height: 40px;
+  width: auto;
+}
+
+/* Todo list styles */
+
+.container {
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+.title {
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+hr {
+  border: 1px solid #ccc;
+  margin-bottom: 50px;
+}
+
+.input-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.form-control {
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+  text-transform: capitalize;
+  outline: none;
+}
+
+.form-control:focus {
+  border-bottom: 2px solid #0a3056;
+  transition: border 0.3 ease;
+  box-shadow: 0 0 5px rgba(5, 81, 87, 0.5);
+}
+
+.btn-success {
+  border-radius: 5px;
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.todo-table {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.table-header {
+  display: flex;
+  background-color: #f0f0f0;
+  padding: 10px;
+}
+
+.table-cell {
+  flex: 1;
+  padding: 10px;
+  font-size: 18px;
+  text-transform: capitalize;
+}
+
+.table-body {
+  display: grid;
+}
+
+.table-row {
+  display: flex;
+  border-top: 1px solid #ccc;
+}
+
+.even-row {
+  background-color: #f9f9f9;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+.completed-cell {
+  color: #888;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+  border: none;
+}
+
+.btn-info {
+  background-color: #17a2b8;
+  color: white;
+  border: none;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+}
+
+button {
+  margin-left: 3px;
+}
